@@ -1,0 +1,13 @@
+# Dependency directories
+/node_modules
+
+# Logs
+logs
+*.log
+
+# Debugging
+.vscode
+.idea
+
+# Environment variables
+.env
