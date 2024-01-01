@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 const express=require('express');
-const Signup=require('./Models/Signup')
+// const Signup=require('./Models/Signup')
+const Signup=require('./Routes/signup')
 const app=express();
 require('dotenv').config();
 app.use(express.json)
@@ -14,6 +15,6 @@ mongoose.connect(URI)
 })})
 .catch(err=>console.error(err))
 
-app.post('/insert',(req,res)=>{
-    
-})
+// S
+app.use('/auth',Signup)
+
