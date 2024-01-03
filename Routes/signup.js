@@ -16,35 +16,30 @@ router.post('/signup', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ success, errors: errors.array() });
     }
-
+const alreadyExistedUser=await Signup.findOne({Email:req.body.Email});
+if(alreadyExistedUser){
+    res.json({success, msg:'user with the same email exist'})
+}
     try {
         const salt = await bcryptjs.genSalt(10);
         const password = await bcryptjs.hash(req.body.Password, salt);
 
         const user = {
-            username: req.body.Name,
+            Name: req.body.Name,
             Email: req.body.Email,
             Password: password
         };
-
-        const data = {
-            data: user
-        };
-
-        const JWT_token = process.env.JWT_Token;
-        const jwtData = jwt.sign(data, JWT_token);
-
-        console.log(jwtData);
+const jwt_uri=process.env.JWT_Token;
 
         const signup = new Signup(user);
-        await signup.save((err) => {
-            if (err) {
-                return res.status(500).json({ error: err, success });
-            }
-            res.json({ success: true, signup });
-        });
+        await signup.save()
+        const token={
+            id:signup._id
+        }
+        const Sign_token=jwt.sign(token, jwt_uri)
+        res.json({ success: true, msg:'Account successfully created' });
     } catch (error) {
-        res.status(500).json({ error, success });
+        res.status(500).json({ error:errors.array(), success, msg:"some error occured try again" });
     }
 });
 

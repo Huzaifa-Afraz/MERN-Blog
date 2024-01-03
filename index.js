@@ -1,10 +1,9 @@
 const mongoose=require('mongoose');
 const express=require('express');
-// const Signup=require('./Models/Signup')
 const Signup=require('./Routes/signup')
 const app=express();
 require('dotenv').config();
-app.use(express.json)
+app.use(express.json())
 
 const PORT=process.env.PORT||3000;
 const URI=process.env.MONGODB_URI;
