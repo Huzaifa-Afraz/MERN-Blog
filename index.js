@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 const express=require('express');
 const Signup=require('./Routes/signup')
+const Login=require('./Routes/Login')
 const app=express();
 require('dotenv').config();
 app.use(express.json())
@@ -16,4 +17,5 @@ mongoose.connect(URI)
 
 // S
 app.use('/auth',Signup)
+app.use('/auth', Login)
 
