@@ -22,7 +22,6 @@ const {Email, Password}=req.body;
 try {
     let user=await Login.findOne({Email})
     // if(user){
-
     // }
     // else{
     //     res.status(404).json({success, msg:'please login with correct credentials'})
