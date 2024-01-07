@@ -1,6 +1,11 @@
 const mongoose=require('mongoose')
 const Schema= mongoose.Schema;
 const Blogs=new Schema({
+    userid:{
+type:mongoose.Schema.Types.ObjectId,
+ref:'Uers',
+require:true
+    },
     title:{
         type:String,
         require:true
@@ -17,6 +22,6 @@ const Blogs=new Schema({
 },{
     timestamps:true
 });
-const Notes=mongoose.model('Blog', Blogs);
-Notes.createIndexes();
-module.exports=Blogs
+const blog=mongoose.model('Blog', Blogs);
+blog.createIndexes();
+module.exports=blog;

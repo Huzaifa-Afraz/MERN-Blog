@@ -3,6 +3,7 @@ const express=require('express');
 const Signup=require('./Routes/signup')
 const Login=require('./Routes/Login')
 const Fetchdata=require('./Routes/fetchuser')
+const Blog=require('./Routes/addblog')
 const app=express();
 require('dotenv').config();
 app.use(express.json())
@@ -20,3 +21,4 @@ mongoose.connect(URI)
 app.use('/auth',Signup)
 app.use('/auth', Login)
 app.use('/auth', Fetchdata)
+app.use('/api', Blog)
