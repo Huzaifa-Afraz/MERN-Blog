@@ -3,7 +3,8 @@ const express=require('express');
 const Signup=require('./Routes/signup')
 const Login=require('./Routes/Login')
 const Fetchdata=require('./Routes/fetchuser')
-const Blog=require('./Routes/addblog')
+const addBlog=require('./Routes/addblog')
+const allBlogs=require('./Routes/show-blog')
 const app=express();
 require('dotenv').config();
 app.use(express.json())
@@ -17,8 +18,8 @@ mongoose.connect(URI)
 })})
 .catch(err=>console.error(err))
 
-// S
 app.use('/auth',Signup)
 app.use('/auth', Login)
 app.use('/auth', Fetchdata)
-app.use('/api', Blog)
+app.use('/api', addBlog);
+app.use('/api', allBlogs);
