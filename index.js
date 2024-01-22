@@ -5,6 +5,7 @@ const Login=require('./Routes/Login')
 const Fetchdata=require('./Routes/fetchuser')
 const addBlog=require('./Routes/addblog')
 const allBlogs=require('./Routes/show-blog')
+const updateBlog=require('./Routes/editblog')
 const app=express();
 require('dotenv').config();
 app.use(express.json())
@@ -23,3 +24,4 @@ app.use('/auth', Login)
 app.use('/auth', Fetchdata)
 app.use('/api', addBlog);
 app.use('/api', allBlogs);
+app.use('/api',updateBlog)
