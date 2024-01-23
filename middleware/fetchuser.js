@@ -1,6 +1,4 @@
 const jwt=require('jsonwebtoken')
-
-
 const fetchdata=(req, res,next)=>{
 const token=req.header('auth-token')
 let success=false
@@ -10,9 +8,7 @@ if(!token){
 try {
 
     const userdata=jwt.verify(token, process.env.JWT_Token)
-    console.log(userdata)
     req.user=userdata.data;
-    console.log(req.user)
      next();
 } catch (error) {
     res.status(400).json({success, error})

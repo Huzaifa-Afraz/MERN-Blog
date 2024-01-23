@@ -11,7 +11,6 @@ if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
   }
 const {title, descreption, tags}=req.body;
 const newNote={};
-console.log('update api working')
 if(title) newNote.title=title;
 if(descreption) newNote.descreption=descreption;
 if(tags)newNote.tags=tags;
