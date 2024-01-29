@@ -11,7 +11,7 @@ try {
     req.user=userdata.data;
      next();
 } catch (error) {
-    res.status(400).json({success, error})
+    return res.status(400).json({success, error})
 }
 }
 module.exports=fetchdata;

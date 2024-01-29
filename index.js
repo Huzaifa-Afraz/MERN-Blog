@@ -18,6 +18,7 @@ mongoose.connect(URI)
 .then(()=>{app.listen(PORT)})
 .catch(err=>console.error(err))
 
+
 app.use('/auth',Signup)
 app.use('/auth', Login)
 app.use('/auth', Fetchdata)
