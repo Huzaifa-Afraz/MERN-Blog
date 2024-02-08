@@ -17,10 +17,14 @@ if(!Result.isEmpty()){
 }
 const {Email, Password}=req.body;
 try {
+    // let user=await Login.findOne({Email})
+    // let UserPasseord=bcryptjs.compare(Password, user.Password)
+    // if(!user || !UserPasseord){
+    //    return res.status(404).json({success, msg:'please login with correct credentials'})
+    // }
     let user=await Login.findOne({Email})
-    let UserPasseord=bcryptjs.compare(Password, user.Password)
-    if(!user || !UserPasseord){
-       return res.status(404).json({success, msg:'please login with correct credentials'})
+    if(!user || !(await bcryptjs.compare(Password, user.Password)) ){
+        return res.status(404).json({success, msg:'Invalid email or password. Please try again.'})
     }
     const userId={
         data:user._id

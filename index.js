@@ -1,5 +1,6 @@
 const mongoose=require('mongoose');
 const express=require('express');
+const cors = require('cors');
 const Signup=require('./Routes/signup')
 const Login=require('./Routes/Login')
 const Fetchdata=require('./Routes/fetchuser')
@@ -10,12 +11,12 @@ const deleteBlog=require('./Routes/delete-blog')
 const app=express();
 require('dotenv').config();
 app.use(express.json())
-
+app.use(cors());
 const PORT=process.env.PORT||3000;
 const URI=process.env.MONGODB_URI;
 
 mongoose.connect(URI)
-.then(()=>{app.listen(PORT)})
+.then(()=>{app.listen(PORT),console.log(PORT)})
 .catch(err=>console.error(err))
 
 
