@@ -17,7 +17,6 @@ router.post('/signup', [
         return res.status(400).json({ success, errors: errors.array() });
     }
 
-
     try {
         const alreadyExistedUser=await Signup.findOne({Email:req.body.Email});
         if(alreadyExistedUser){
@@ -32,8 +31,6 @@ router.post('/signup', [
             Password: password
         };
 const jwt_uri=process.env.JWT_Token || 'not found';
-console.log(jwt_uri)
-
         const signup = new Signup(user);
         await signup.save()
         const token={
@@ -42,7 +39,6 @@ console.log(jwt_uri)
         const Sign_token=jwt.sign(token, jwt_uri)
         res.json({ success: true, msg:'Account successfully created', Sign_token });
     } catch (error) {
-        console.log(error)
         res.status(500).json({ error:errors.array(), success, msg:"some error occured try again" });
     }
 });
