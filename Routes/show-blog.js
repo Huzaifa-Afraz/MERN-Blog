@@ -5,12 +5,12 @@ const Blog=require('../Models/Blog')
 router.get('/show-blogs',loggedInUser, async(req,res)=>{
 let success=false;
 const user=req.user;
-console.log(user)
+// console.log(user)
     if(!user){
         return res.status(400).json({success, msg:'user not found'})
     }
     const blogs= await Blog.find({userid:user});
-    return blogs!==null?res.send({blogs,user}):res.send({user,msg:'blogs not found for this id'});
+    return blogs!==null?res.send({blogs,success:true}):res.send({success,msg:'you did not published any blog yet'});
 })
 
 module.exports=router;
