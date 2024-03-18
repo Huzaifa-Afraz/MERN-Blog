@@ -11,7 +11,7 @@ body('descreption','minimum descreption length should be 20 characters').isLengt
     let success=false;
 const validationrzlt=validationResult(req)
 if(!validationrzlt.isEmpty()){
-    return res.status(400).json({error:validationrzlt.array()})
+    return res.status(400).json({error:validationrzlt.array(),msg:'bad request'})
 }
 try {
     const {title,descreption,tags}=req.body;

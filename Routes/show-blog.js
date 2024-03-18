@@ -9,7 +9,7 @@ const user=req.user;
     if(!user){
         return res.status(400).json({success, msg:'user not found'})
     }
-    const blogs= await Blog.find({userid:user});
+    const blogs= await Blog.find({userid:user}).sort({ createdAt: -1 });
     return blogs!==null?res.send({blogs,success:true}):res.send({success,msg:'you did not published any blog yet'});
 })
 
