@@ -19,9 +19,9 @@ const blog= new Blog(
     {title,descreption,tags,userid:await req.user}
 )
 const saveblog=await blog.save();
-res.status(200).json({success:true, msg:'blog save successfully', saveblog})
+return res.status(200).json({success:true, msg:'blog save successfully', saveblog})
 } catch (error) {
-    res.status(401).json({success, msg:'error to save blog', error})
+    return res.status(401).json({success, msg:'error to save blog', error})
 }
 
 
